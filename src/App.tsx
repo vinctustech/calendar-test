@@ -65,7 +65,18 @@ function App() {
   // }
 
   return (
-    <Card style={{ width: 1000, height: 800 }}>
+    <Card
+      style={{ width: 1500, height: 900, display: 'flex', flexDirection: 'column' }}
+      styles={{
+        body: {
+          flex: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          padding: '16px',
+          overflow: 'hidden',
+        },
+      }}
+    >
       <Button type="primary" onClick={prevMonth}>
         prev
       </Button>
