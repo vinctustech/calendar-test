@@ -127,25 +127,26 @@ function App() {
   // }
 
   return (
-    <Card
-      style={{ width: '100%', height: 900, display: 'flex', flexDirection: 'column' }}
-      styles={{
-        body: {
-          flex: 1,
-          display: 'flex',
-          flexDirection: 'column',
-          padding: '16px',
-          overflow: 'hidden',
-        },
-      }}
-    >
+    <Card style={{ width: '100%', height: 900 }}>
       <Button type="primary" onClick={prevMonth}>
         prev
       </Button>
       <Button type="primary" onClick={nextMonth}>
         next
       </Button>
-      <Calendar month={currentMonth} year={currentYear} events={sampleEvents} />
+      <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+        <div
+          style={{
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+            padding: '16px',
+            overflow: 'hidden',
+          }}
+        >
+          <Calendar month={currentMonth} year={currentYear} events={sampleEvents} />
+        </div>
+      </div>
     </Card>
   )
 }
