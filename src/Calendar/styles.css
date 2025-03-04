@@ -38,9 +38,9 @@
 .calendar-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(6, minmax(80px, 1fr)); /* Equal height for 6 weeks */
-    flex: 1; /* Take remaining space in container */
-    min-height: 0; /* IMPORTANT: Allows flex container to shrink below content size */
+    grid-template-rows: repeat(6, 1fr);
+    flex: 1;
+    min-height: 0;
     border-left: 1px solid #e0e0e0;
 }
 
@@ -73,7 +73,7 @@
 .date-number-container {
     display: flex;
     justify-content: flex-start;
-    margin-bottom: 6px;
+    margin-bottom: 2px;
 }
 
 .date-number {

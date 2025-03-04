@@ -2,12 +2,18 @@ import { FC, useState } from 'react'
 import './styles.css'
 
 export type CalendarEvent = { date: Date; title: string; color: string }
-export type CalendarProps = { month: number; year: number; events: CalendarEvent[] }
+export type CalendarProps = {
+  month: number
+  year: number
+  events: CalendarEvent[]
+  maxEventsPerDay?: number
+}
 
 const Calendar: FC<CalendarProps> = ({
   month = new Date().getMonth(),
   year = new Date().getFullYear(),
   events,
+  maxEventsPerDay = 2,
 }) => {
   const [selectedDate, setSelectedDate] = useState(new Date())
 
@@ -173,7 +179,7 @@ const Calendar: FC<CalendarProps> = ({
 
               {/* Events */}
               <div className="events-container">
-                {dateEvents.slice(0, 3).map((event, eventIndex) => (
+                {dateEvents.slice(0, maxEventsPerDay).map((event, eventIndex) => (
                   <div
                     key={eventIndex}
                     className={`event-item ${isFutureDate(event.date) ? 'future-event' : ''}`}
@@ -183,8 +189,8 @@ const Calendar: FC<CalendarProps> = ({
                   </div>
                 ))}
 
-                {dateEvents.length > 3 && (
-                  <div className="more-events">+{dateEvents.length - 3} more</div>
+                {dateEvents.length > maxEventsPerDay && (
+                  <div className="more-events">+{dateEvents.length - maxEventsPerDay} more</div>
                 )}
               </div>
             </div>
