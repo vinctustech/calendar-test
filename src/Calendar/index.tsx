@@ -7,6 +7,7 @@ export type CalendarProps = {
   year: number
   events: CalendarEvent[]
   maxEventsPerDay?: number
+  onMoreEventsClick?: (date: Date, events: CalendarEvent[]) => void
 }
 
 const Calendar: FC<CalendarProps> = ({
@@ -14,6 +15,7 @@ const Calendar: FC<CalendarProps> = ({
   year = new Date().getFullYear(),
   events,
   maxEventsPerDay = 2,
+  onMoreEventsClick,
 }) => {
   const [selectedDate, setSelectedDate] = useState(new Date())
 
@@ -190,7 +192,18 @@ const Calendar: FC<CalendarProps> = ({
                 ))}
 
                 {dateEvents.length > maxEventsPerDay && (
-                  <div className="more-events">+{dateEvents.length - maxEventsPerDay} more</div>
+                  <div
+                    className="more-events"
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      if (onMoreEventsClick) {
+                        onMoreEventsClick(dateObj.date, dateEvents)
+                      }
+                    }}
+                    style={{ cursor: onMoreEventsClick ? 'pointer' : 'default' }}
+                  >
+                    +{dateEvents.length - maxEventsPerDay} more
+                  </div>
                 )}
               </div>
             </div>
