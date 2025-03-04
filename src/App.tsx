@@ -50,6 +50,7 @@ function App() {
       date: new Date(2025, 2, 3),
       color: '#DB4437',
       completed: false,
+      cancelled: true,
     },
     {
       id: 7,

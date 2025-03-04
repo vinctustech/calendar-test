@@ -1,7 +1,12 @@
 import { FC, useState } from 'react'
 import './styles.css'
 
-export type CalendarEvent = { date: Date; title: string; color: string }
+export type CalendarEvent = {
+  date: Date
+  title: string
+  color: string
+  cancelled?: boolean
+}
 export type CalendarProps = {
   month: number
   year: number
@@ -185,7 +190,11 @@ const Calendar: FC<CalendarProps> = ({
                 {dateEvents.slice(0, maxEventsPerDay).map((event, eventIndex) => (
                   <div
                     key={eventIndex}
-                    className={`event-item ${isFutureDate(event.date) ? 'future-event' : ''}`}
+                    className={`
+                      event-item 
+                      ${isFutureDate(event.date) ? 'future-event' : ''} 
+                      ${event.cancelled ? 'cancelled-event' : ''}
+                    `}
                     onClick={(e) => {
                       e.stopPropagation()
                       if (onEventClick) {

@@ -133,6 +133,15 @@
     text-overflow: ellipsis;
 }
 
+.cancelled-event {
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+.cancelled-event .event-dot {
+    opacity: 0.5;
+}
+
 .future-event {
     color: #80868b;
 }
