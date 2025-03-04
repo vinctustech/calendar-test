@@ -7,6 +7,7 @@ export type CalendarProps = {
   year: number
   events: CalendarEvent[]
   maxEventsPerDay?: number
+  onEventClick?: (event: CalendarEvent) => void
   onMoreEventsClick?: (date: Date, events: CalendarEvent[]) => void
 }
 
@@ -15,6 +16,7 @@ const Calendar: FC<CalendarProps> = ({
   year = new Date().getFullYear(),
   events,
   maxEventsPerDay = 2,
+  onEventClick,
   onMoreEventsClick,
 }) => {
   const [selectedDate, setSelectedDate] = useState(new Date())
@@ -179,12 +181,18 @@ const Calendar: FC<CalendarProps> = ({
                 </span>
               </div>
 
-              {/* Events */}
               <div className="events-container">
                 {dateEvents.slice(0, maxEventsPerDay).map((event, eventIndex) => (
                   <div
                     key={eventIndex}
                     className={`event-item ${isFutureDate(event.date) ? 'future-event' : ''}`}
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      if (onEventClick) {
+                        onEventClick(event)
+                      }
+                    }}
+                    style={{ cursor: onEventClick ? 'pointer' : 'default' }}
                   >
                     <span className="event-dot" style={{ backgroundColor: event.color }}></span>
                     <span className="event-title">{event.title}</span>

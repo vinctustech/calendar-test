@@ -111,6 +111,11 @@
     overflow: hidden;
     text-overflow: ellipsis;
     color: #3c4043;
+    transition: background-color 0.1s ease;
+}
+
+.event-item:hover {
+    background-color: rgba(0, 0, 0, 0.04);
 }
 
 .event-dot {
