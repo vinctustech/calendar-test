@@ -1,7 +1,6 @@
 import { SetStateAction, useState } from 'react'
 import Calendar from './Calendar'
 import { Button, Card } from 'antd'
-import 'antd/dist/reset.css'
 
 function App() {
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth())
