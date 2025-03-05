@@ -40,7 +40,6 @@
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: repeat(6, 1fr);
     flex: 1;
-    min-height: 0;
     border-left: 1px solid #e0e0e0;
 }
 
@@ -150,46 +149,4 @@
 
 .more-events:hover {
     background-color: rgba(0, 0, 0, 0.04);
-}
-
-@media (max-width: 768px) {
-    .calendar-grid {
-        grid-auto-rows: minmax(70px, auto);
-    }
-
-    .calendar-cell {
-        min-height: 70px;
-        padding: 4px;
-    }
-
-    .event-item {
-        font-size: 11px;
-    }
-}
-
-@media (max-width: 480px) {
-    .calendar-grid {
-        grid-auto-rows: minmax(50px, auto);
-    }
-
-    .calendar-cell {
-        min-height: 50px;
-        padding: 2px;
-    }
-
-    .date-number {
-        width: 20px;
-        height: 20px;
-        font-size: 11px;
-    }
-
-    .event-dot {
-        width: 6px;
-        height: 6px;
-        margin-right: 4px;
-    }
-
-    .event-item {
-        padding: 1px 2px;
-    }
 }
