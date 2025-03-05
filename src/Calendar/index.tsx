@@ -5,7 +5,7 @@ export type CalendarEvent = {
   date: Date
   title: string
   color: string
-  cancelled?: boolean
+  strikethrough?: boolean
 }
 export type CalendarProps = {
   month: number
@@ -193,7 +193,7 @@ const Calendar: FC<CalendarProps> = ({
                     className={`
                       event-item 
                       ${isFutureDate(event.date) ? 'future-event' : ''} 
-                      ${event.cancelled ? 'cancelled-event' : ''}
+                      ${event.strikethrough ? 'cancelled-event' : ''}
                     `}
                     onClick={(e) => {
                       e.stopPropagation()
