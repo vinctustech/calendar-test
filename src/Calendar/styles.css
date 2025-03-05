@@ -108,7 +108,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: #3c4043;
+    color: #80868b;
     transition: background-color 0.1s ease;
     cursor: pointer;
 }
@@ -137,7 +137,7 @@
 }
 
 .future-event {
-    color: #80868b;
+    color: #3c4043;
 }
 
 .more-events {

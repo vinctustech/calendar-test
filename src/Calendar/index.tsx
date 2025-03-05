@@ -124,8 +124,11 @@ const isSelected = (date: Date, selectedDate: Date) => {
 // Check if a date is in the future
 const isFutureDate = (date: Date) => {
   const today = new Date()
+  const checkDate = new Date(date)
+
   today.setHours(0, 0, 0, 0)
-  return date > today
+  checkDate.setHours(0, 0, 0, 0)
+  return checkDate > today
 }
 
 export type CalendarProps = {
