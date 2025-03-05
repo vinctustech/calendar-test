@@ -8,16 +8,6 @@ export type CalendarEvent = {
   strikethrough?: boolean
 }
 
-export type CalendarProps = {
-  month: number
-  year: number
-  events: CalendarEvent[]
-  maxEventsPerDay?: number
-  onEventClick?: (event: CalendarEvent) => void
-  onMoreEventsClick?: (date: Date, events: CalendarEvent[]) => void
-  header?: boolean
-}
-
 const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
 // Get month names for display
@@ -138,6 +128,17 @@ const isFutureDate = (date: Date) => {
   return date > today
 }
 
+export type CalendarProps = {
+  month: number
+  year: number
+  events: CalendarEvent[]
+  maxEventsPerDay?: number
+  onEventClick?: (event: CalendarEvent) => void
+  onMoreEventsClick?: (date: Date, events: CalendarEvent[]) => void
+  header?: boolean
+  moreText?: string
+}
+
 const Calendar: FC<CalendarProps> = ({
   month = new Date().getMonth(),
   year = new Date().getFullYear(),
@@ -146,6 +147,7 @@ const Calendar: FC<CalendarProps> = ({
   onEventClick,
   onMoreEventsClick,
   header,
+  moreText = 'more',
 }) => {
   const [selectedDate, setSelectedDate] = useState(new Date())
 
@@ -204,7 +206,6 @@ const Calendar: FC<CalendarProps> = ({
                         onEventClick(event)
                       }
                     }}
-                    style={{ cursor: onEventClick ? 'pointer' : 'default' }}
                   >
                     <span className="event-dot" style={{ backgroundColor: event.color }}></span>
                     <span className="event-title">{event.title}</span>
@@ -220,9 +221,8 @@ const Calendar: FC<CalendarProps> = ({
                         onMoreEventsClick(dateObj.date, dateEvents)
                       }
                     }}
-                    style={{ cursor: onMoreEventsClick ? 'pointer' : 'default' }}
                   >
-                    +{dateEvents.length - maxEventsPerDay} more
+                    +{dateEvents.length - maxEventsPerDay} {moreText}
                   </div>
                 )}
               </div>
