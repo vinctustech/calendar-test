@@ -1,29 +1,12 @@
 import { FC, useState } from 'react'
 import './styles.css'
 
-export type CalendarEvent = {
-  date: Date
-  title: string
-  color: string
-  strikethrough?: boolean
+export type CalendarLocale = {
+  locale: string
+  daysShort: string[]
+  monthsLong: string[]
+  formatTime: (date: Date) => string
 }
-
-const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-
-const monthNames = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-]
 
 const getDaysInMonth = (year: number, month: number) => {
   return new Date(year, month + 1, 0).getDate()
@@ -120,6 +103,13 @@ const isFutureDate = (date: Date) => {
   return checkDate > today
 }
 
+export type CalendarEvent = {
+  date: Date
+  title: string
+  color: string
+  strikethrough?: boolean
+}
+
 export type CalendarProps = {
   month: number
   year: number
@@ -130,6 +120,8 @@ export type CalendarProps = {
   header?: boolean
   moreText?: string
   daySelector?: boolean
+  dayNames?: string[]
+  monthNames?: string[]
 }
 
 const Calendar: FC<CalendarProps> = ({
@@ -142,6 +134,8 @@ const Calendar: FC<CalendarProps> = ({
   header,
   moreText = 'more',
   daySelector,
+  dayNames = EnglishDayNames,
+  monthNames = EnglishMonthNames,
 }) => {
   const [selectedDate, setSelectedDate] = useState(new Date())
 
