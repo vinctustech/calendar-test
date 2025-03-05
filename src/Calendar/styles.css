@@ -148,6 +148,10 @@
     cursor: pointer;
 }
 
+.more-events:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
 @media (max-width: 768px) {
     .calendar-grid {
         grid-auto-rows: minmax(70px, auto);
