@@ -129,6 +129,7 @@ export type CalendarProps = {
   onMoreEventsClick?: (date: Date, events: CalendarEvent[]) => void
   header?: boolean
   moreText?: string
+  daySelector?: boolean
 }
 
 const Calendar: FC<CalendarProps> = ({
@@ -140,6 +141,7 @@ const Calendar: FC<CalendarProps> = ({
   onMoreEventsClick,
   header,
   moreText = 'more',
+  daySelector,
 }) => {
   const [selectedDate, setSelectedDate] = useState(new Date())
 
@@ -174,8 +176,8 @@ const Calendar: FC<CalendarProps> = ({
               key={index}
               className={`calendar-cell ${!dateObj.isCurrentMonth ? 'other-month' : ''} 
                   ${isToday(dateObj.date) ? 'today' : ''} 
-                  ${isEqual(dateObj.date, selectedDate) ? 'selected' : ''}`}
-              onClick={() => setSelectedDate(dateObj.date)}
+                  ${daySelector && isEqual(dateObj.date, selectedDate) ? 'selected' : ''}`}
+              onClick={() => daySelector && setSelectedDate(dateObj.date)}
             >
               <div className="date-number-container">
                 <span className={`date-number ${isToday(dateObj.date) ? 'today-number' : ''}`}>
