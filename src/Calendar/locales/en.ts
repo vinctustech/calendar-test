@@ -1,4 +1,4 @@
-import { CalendarLocale } from '../index.tsx'
+import { CalendarLocale } from './index.ts'
 
 const daysShort = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 const monthsLong = [
@@ -15,7 +15,7 @@ const monthsLong = [
   'November',
   'December',
 ]
-
+const moreText = 'more'
 const formatTime = (date: Date): string => {
   const options: Intl.DateTimeFormatOptions = {
     hour: 'numeric', // removes leading zeros automatically
@@ -32,6 +32,7 @@ const en: CalendarLocale = {
   locale: 'en',
   daysShort,
   monthsLong,
+  moreText,
   formatTime,
 }
 

@@ -139,7 +139,7 @@ function App() {
           year={currentYear}
           events={sampleEvents}
           header={true}
-          locale={fr}
+          locale={en}
         />
       </div>
     </Card>

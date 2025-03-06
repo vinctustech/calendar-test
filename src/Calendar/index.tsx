@@ -1,13 +1,6 @@
 import { FC, useState } from 'react'
 import './styles.css'
-import en from './locales/en'
-
-export type CalendarLocale = {
-  locale: string
-  daysShort: string[]
-  monthsLong: string[]
-  formatTime: (date: Date) => string
-}
+import { CalendarLocale, en } from './locales'
 
 const getDaysInMonth = (year: number, month: number) => {
   return new Date(year, month + 1, 0).getDate()
@@ -119,7 +112,6 @@ export type CalendarProps = {
   onEventClick?: (event: CalendarEvent) => void
   onMoreEventsClick?: (date: Date, events: CalendarEvent[]) => void
   header?: boolean
-  moreText?: string
   daySelector?: boolean
   locale?: CalendarLocale
 }
@@ -132,7 +124,6 @@ const Calendar: FC<CalendarProps> = ({
   onEventClick,
   onMoreEventsClick,
   header,
-  moreText = 'more',
   daySelector,
   locale = en,
 }) => {
@@ -150,7 +141,6 @@ const Calendar: FC<CalendarProps> = ({
         </div>
       )}
 
-      {/* Days of Week Header */}
       <div className="weekday-header">
         {locale.daysShort.map((day, index) => (
           <div key={index} className="weekday-cell">
@@ -159,7 +149,6 @@ const Calendar: FC<CalendarProps> = ({
         ))}
       </div>
 
-      {/* Calendar Grid */}
       <div className="calendar-grid">
         {generateCalendarGrid(year, month).map((dateObj, index) => {
           const dateEvents = getEventsForDate(events, dateObj.date)
@@ -209,7 +198,7 @@ const Calendar: FC<CalendarProps> = ({
                       }
                     }}
                   >
-                    +{dateEvents.length - maxEventsPerDay} {moreText}
+                    +{dateEvents.length - maxEventsPerDay} {locale.moreText}
                   </div>
                 )}
               </div>

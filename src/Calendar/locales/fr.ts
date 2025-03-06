@@ -13,7 +13,7 @@ const monthsLong = [
   'novembre',
   'décembre',
 ]
-
+const moreText = 'autres'
 const formatTime = (date: Date): string => {
   return date.toLocaleTimeString('fr-FR', {
     hour: '2-digit',
@@ -26,6 +26,7 @@ const fr = {
   locale: 'fr',
   daysShort,
   monthsLong,
+  moreText,
   formatTime,
 }
 
