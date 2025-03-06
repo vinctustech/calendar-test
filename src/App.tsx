@@ -1,11 +1,10 @@
-import { SetStateAction, useState } from 'react'
+import { useState } from 'react'
 import Calendar, { CalendarEvent } from './Calendar'
 import { en, fr } from './Calendar/locales'
-import { Button, Card } from 'antd'
+import { Card } from 'antd'
 
 function App() {
-  const [currentMonth, setCurrentMonth] = useState(new Date().getMonth())
-  const [currentYear, setCurrentYear] = useState(new Date().getFullYear())
+  const [date, setDate] = useState(new Date())
 
   const sampleEvents: CalendarEvent[] = [
     {
@@ -100,24 +99,19 @@ function App() {
     },
   ]
 
-  const handleMonthChange = (month: SetStateAction<number>, year: SetStateAction<number>) => {
-    setCurrentMonth(month)
-    setCurrentYear(year)
-  }
-
-  // Navigate to previous month
-  const prevMonth = () => {
-    const newMonth = currentMonth === 0 ? 11 : currentMonth - 1
-    const newYear = currentMonth === 0 ? currentYear - 1 : currentYear
-    handleMonthChange(newMonth, newYear)
-  }
-
-  // Navigate to next month
-  const nextMonth = () => {
-    const newMonth = currentMonth === 11 ? 0 : currentMonth + 1
-    const newYear = currentMonth === 11 ? currentYear + 1 : currentYear
-    handleMonthChange(newMonth, newYear)
-  }
+  // // Navigate to previous month
+  // const prevMonth = () => {
+  //   const newMonth = currentMonth === 0 ? 11 : currentMonth - 1
+  //   const newYear = currentMonth === 0 ? currentYear - 1 : currentYear
+  //   handleMonthChange(newMonth, newYear)
+  // }
+  //
+  // // Navigate to next month
+  // const nextMonth = () => {
+  //   const newMonth = currentMonth === 11 ? 0 : currentMonth + 1
+  //   const newYear = currentMonth === 11 ? currentYear + 1 : currentYear
+  //   handleMonthChange(newMonth, newYear)
+  // }
 
   // Navigate to today
   // const goToToday = () => {
@@ -127,20 +121,14 @@ function App() {
 
   return (
     <Card>
-      <Button type="primary" onClick={prevMonth}>
-        prev
-      </Button>
-      <Button type="primary" onClick={nextMonth}>
-        next
-      </Button>
+      {/*<Button type="primary" onClick={prevMonth}>*/}
+      {/*  prev*/}
+      {/*</Button>*/}
+      {/*<Button type="primary" onClick={nextMonth}>*/}
+      {/*  next*/}
+      {/*</Button>*/}
       <div style={{ height: 'calc(100vh - 140px)' }}>
-        <Calendar
-          month={currentMonth}
-          year={currentYear}
-          events={sampleEvents}
-          header={true}
-          locale={en}
-        />
+        <Calendar date={date} events={sampleEvents} header={true} locale={en} />
       </div>
     </Card>
   )

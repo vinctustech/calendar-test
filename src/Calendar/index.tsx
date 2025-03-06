@@ -79,13 +79,13 @@ const generateCalendarGrid = (year: number, month: number) => {
 
 const isToday = (date: Date) => isEqual(date, new Date())
 
-const isEqual = (date: Date, selectedDate: Date) => {
-  const today = new Date(date)
-  const checkDate = new Date(selectedDate)
+const isEqual = (a: Date, b: Date) => {
+  const acopy = new Date(a)
+  const bcopy = new Date(b)
 
-  today.setHours(0, 0, 0, 0)
-  checkDate.setHours(0, 0, 0, 0)
-  return checkDate.getTime() === today.getTime()
+  acopy.setHours(0, 0, 0, 0)
+  bcopy.setHours(0, 0, 0, 0)
+  return bcopy.getTime() === acopy.getTime()
 }
 
 const isFutureDate = (date: Date) => {
@@ -105,8 +105,7 @@ export type CalendarEvent = {
 }
 
 export type CalendarProps = {
-  month: number
-  year: number
+  date: Date
   events: CalendarEvent[]
   maxEventsPerDay?: number
   onEventClick?: (event: CalendarEvent) => void
@@ -117,8 +116,7 @@ export type CalendarProps = {
 }
 
 const Calendar: FC<CalendarProps> = ({
-  month = new Date().getMonth(),
-  year = new Date().getFullYear(),
+  date = new Date(),
   events,
   maxEventsPerDay = 2,
   onEventClick,
@@ -128,6 +126,9 @@ const Calendar: FC<CalendarProps> = ({
   locale = en,
 }) => {
   const [selectedDate, setSelectedDate] = useState(new Date())
+
+  const year = date.getFullYear()
+  const month = date.getMonth()
 
   return (
     <div className="calendar-container">
