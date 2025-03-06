@@ -1,3 +1,5 @@
+import { CalendarLocale } from '../index.tsx'
+
 const daysShort = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 const monthsLong = [
   'January',
@@ -26,7 +28,7 @@ const formatTime = (date: Date): string => {
   return formatted.replace(' ', '').toLowerCase().replace(':00', '')
 }
 
-const en = {
+const en: CalendarLocale = {
   locale: 'en',
   daysShort,
   monthsLong,

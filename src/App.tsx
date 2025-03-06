@@ -1,5 +1,7 @@
 import { SetStateAction, useState } from 'react'
 import Calendar, { CalendarEvent } from './Calendar'
+import en from './Calendar/locales/en'
+import fr from './Calendar/locales/fr'
 import { Button, Card } from 'antd'
 
 function App() {
@@ -133,7 +135,13 @@ function App() {
         next
       </Button>
       <div style={{ height: 'calc(100vh - 140px)' }}>
-        <Calendar month={currentMonth} year={currentYear} events={sampleEvents} />
+        <Calendar
+          month={currentMonth}
+          year={currentYear}
+          events={sampleEvents}
+          header={true}
+          locale={en}
+        />
       </div>
     </Card>
   )

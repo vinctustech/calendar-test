@@ -1,5 +1,6 @@
 import { FC, useState } from 'react'
 import './styles.css'
+import en from './locales/en'
 
 export type CalendarLocale = {
   locale: string
@@ -120,8 +121,7 @@ export type CalendarProps = {
   header?: boolean
   moreText?: string
   daySelector?: boolean
-  dayNames?: string[]
-  monthNames?: string[]
+  locale?: CalendarLocale
 }
 
 const Calendar: FC<CalendarProps> = ({
@@ -134,8 +134,7 @@ const Calendar: FC<CalendarProps> = ({
   header,
   moreText = 'more',
   daySelector,
-  dayNames = EnglishDayNames,
-  monthNames = EnglishMonthNames,
+  locale = en,
 }) => {
   const [selectedDate, setSelectedDate] = useState(new Date())
 
@@ -145,7 +144,7 @@ const Calendar: FC<CalendarProps> = ({
         <div className="calendar-header">
           <div className="month-display">
             <h2>
-              {monthNames[month]} {year}
+              {locale.monthsLong[month]} {year}
             </h2>
           </div>
         </div>
@@ -153,7 +152,7 @@ const Calendar: FC<CalendarProps> = ({
 
       {/* Days of Week Header */}
       <div className="weekday-header">
-        {dayNames.map((day, index) => (
+        {locale.daysShort.map((day, index) => (
           <div key={index} className="weekday-cell">
             {day}
           </div>
