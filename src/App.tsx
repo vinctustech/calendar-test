@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Calendar, { CalendarEvent } from './Calendar'
+import { Calendar, CalendarEvent } from './Calendar'
 import { en, fr } from './Calendar/locales'
 import { Card } from 'antd'
 

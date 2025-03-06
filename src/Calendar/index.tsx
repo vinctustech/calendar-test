@@ -115,7 +115,7 @@ export type CalendarProps = {
   locale?: CalendarLocale
 }
 
-const Calendar: FC<CalendarProps> = ({
+export const Calendar: FC<CalendarProps> = ({
   date = new Date(),
   events,
   maxEventsPerDay = 2,
@@ -210,5 +210,3 @@ const Calendar: FC<CalendarProps> = ({
     </div>
   )
 }
-
-export default Calendar
