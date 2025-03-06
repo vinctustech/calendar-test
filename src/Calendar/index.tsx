@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { useState } from 'react'
 import './styles.css'
 import { CalendarLocale, en } from './locales'
 
@@ -10,7 +10,7 @@ const getFirstDayOfMonth = (year: number, month: number) => {
   return new Date(year, month, 1).getDay()
 }
 
-const getEventsForDate = (events: CalendarEvent[], date: Date) => {
+const getEventsForDate = <T extends CalendarEvent>(events: T[], date: Date) => {
   return events.filter(
     (event) =>
       event.date.getDate() === date.getDate() &&
@@ -104,18 +104,18 @@ export type CalendarEvent = {
   strikethrough?: boolean
 }
 
-export type CalendarProps = {
+export type CalendarProps<T extends CalendarEvent = CalendarEvent> = {
   date: Date
-  events: CalendarEvent[]
+  events: T[]
   maxEventsPerDay?: number
-  onEventClick?: (event: CalendarEvent) => void
-  onMoreEventsClick?: (date: Date, events: CalendarEvent[]) => void
+  onEventClick?: (event: T) => void
+  onMoreEventsClick?: (date: Date, events: T[]) => void
   header?: boolean
   daySelector?: boolean
   locale?: CalendarLocale
 }
 
-export const Calendar: FC<CalendarProps> = ({
+export const Calendar = <T extends CalendarEvent>({
   date = new Date(),
   events,
   maxEventsPerDay = 2,
@@ -124,7 +124,7 @@ export const Calendar: FC<CalendarProps> = ({
   header,
   daySelector,
   locale = en,
-}) => {
+}: CalendarProps<T>) => {
   const [selectedDate, setSelectedDate] = useState(new Date())
 
   const year = date.getFullYear()

@@ -1,10 +1,9 @@
-import { useState } from 'react'
 import { Calendar, CalendarEvent } from './Calendar'
-import { en, fr } from './Calendar/locales'
+import { en } from './Calendar/locales'
 import { Card } from 'antd'
 
 function App() {
-  const [date, setDate] = useState(new Date())
+  const date = new Date()
 
   const sampleEvents: CalendarEvent[] = [
     {
