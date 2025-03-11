@@ -133,10 +133,10 @@ export const Calendar = <T extends CalendarEvent>({
   const month = date.getMonth()
 
   return (
-    <div className="calendar-container">
+    <div className="cal-container">
       {header && (
-        <div className="calendar-header">
-          <div className="month-display">
+        <div className="cal-header">
+          <div className="cal-month-display">
             <h2>
               {locale.monthsLong[month]} {year}
             </h2>
@@ -144,33 +144,35 @@ export const Calendar = <T extends CalendarEvent>({
         </div>
       )}
 
-      <div className="weekday-header">
+      <div className="cal-weekday-header">
         {locale.daysShort.map((day, index) => (
-          <div key={index} className="weekday-cell">
+          <div key={index} className="cal-weekday-cell">
             {day}
           </div>
         ))}
       </div>
 
-      <div className="calendar-grid">
+      <div className="cal-grid">
         {generateCalendarGrid(year, month).map((dateObj, index) => {
           const dateEvents = getEventsForDate(events, dateObj.date)
 
           return (
             <div
               key={index}
-              className={`calendar-cell ${!dateObj.isCurrentMonth ? 'other-month' : ''} 
-                  ${isToday(dateObj.date) ? 'today' : ''} 
-                  ${daySelector && isEqual(dateObj.date, selectedDate) ? 'selected' : ''}`}
+              className={`cal-cell ${!dateObj.isCurrentMonth ? 'cal-other-month' : ''} 
+                  ${isToday(dateObj.date) ? 'cal-today' : ''} 
+                  ${daySelector && isEqual(dateObj.date, selectedDate) ? 'cal-selected' : ''}`}
               onClick={() => daySelector && setSelectedDate(dateObj.date)}
             >
-              <div className="date-number-container">
-                <span className={`date-number ${isToday(dateObj.date) ? 'today-number' : ''}`}>
+              <div className="cal-date-number-container">
+                <span
+                  className={`cal-date-number ${isToday(dateObj.date) ? 'cal-today-number' : ''}`}
+                >
                   {dateObj.day}
                 </span>
               </div>
 
-              <div className="events-container">
+              <div className="cal-events-container">
                 {dateEvents
                   .slice(
                     0,
@@ -180,9 +182,9 @@ export const Calendar = <T extends CalendarEvent>({
                     <div
                       key={eventIndex}
                       className={`
-                      event-item 
-                      ${isFutureDate(event.date) ? 'future-event' : ''} 
-                      ${event.strikethrough ? 'cancelled-event' : ''}
+                      cal-event-item 
+                      ${isFutureDate(event.date) ? 'cal-future-event' : ''} 
+                      ${event.strikethrough ? 'cal-cancelled-event' : ''}
                     `}
                       onClick={(e) => {
                         e.stopPropagation()
@@ -192,8 +194,11 @@ export const Calendar = <T extends CalendarEvent>({
                       }}
                       title={event.title}
                     >
-                      <span className="event-dot" style={{ backgroundColor: event.color }}></span>
-                      <span className={`event-title ${ellipsis ? 'ellipsis' : ''}`}>
+                      <span
+                        className="cal-event-dot"
+                        style={{ backgroundColor: event.color }}
+                      ></span>
+                      <span className={`cal-event-title ${ellipsis ? 'cal-ellipsis' : ''}`}>
                         {event.title}
                       </span>
                     </div>
@@ -201,7 +206,7 @@ export const Calendar = <T extends CalendarEvent>({
 
                 {dateEvents.length > maxEventsPerDay && (
                   <div
-                    className="more-events"
+                    className="cal-more-events"
                     onClick={(e) => {
                       e.stopPropagation()
                       if (onMoreEventsClick) {

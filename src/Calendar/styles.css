@@ -1,4 +1,4 @@
-.calendar-container {
+.cal-container {
     width: 100%;
     height: 100%;
     display: flex;
@@ -8,34 +8,34 @@
             sans-serif;
 }
 
-.calendar-header {
+.cal-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 16px;
 }
 
-.month-display h2 {
+.cal-month-display h2 {
     font-size: 18px;
     font-weight: 500;
     margin: 0;
 }
 
-.weekday-header {
+.cal-weekday-header {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     border-bottom: 1px solid #e0e0e0;
 }
 
-.weekday-cell {
-    padding: 8px;
+.cal-weekday-cell {
+    padding: 4px 0 4px 0;
     text-align: center;
     font-size: 12px;
     font-weight: 500;
     color: #70757a;
 }
 
-.calendar-grid {
+.cal-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: repeat(6, 1fr);
@@ -43,7 +43,7 @@
     border-left: 1px solid #e0e0e0;
 }
 
-.calendar-cell {
+.cal-cell {
     position: relative;
     padding: 6px;
     border-right: 1px solid #e0e0e0;
@@ -51,53 +51,54 @@
     overflow: hidden;
 }
 
-.calendar-cell:hover {
+.cal-cell:hover {
     background-color: #f8f9fa;
 }
 
-.other-month {
+.cal-other-month {
     background-color: #f8f9fa;
 }
 
-.today {
+.cal-today {
     background-color: #e8f0fe;
 }
 
-.selected {
+.cal-selected {
     outline: 2px solid #1a73e8;
     z-index: 1;
 }
 
-.date-number-container {
+.cal-date-number-container {
     display: flex;
     justify-content: center;
     margin-bottom: 2px;
 }
 
-.date-number {
+.cal-date-number {
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 12px;
+    line-height: 1;
     color: #3c4043;
 }
 
-.today-number {
+.cal-today-number {
     color: #1a73e8;
     font-weight: bold;
 }
 
-.other-month .date-number {
+.cal-other-month .cal-date-number {
     color: #80868b;
 }
 
-.events-container {
+.cal-events-container {
     display: flex;
     flex-direction: column;
     gap: 2px;
 }
 
-.event-item {
+.cal-event-item {
     display: flex;
     align-items: center;
     padding: 2px 4px;
@@ -111,11 +112,11 @@
     border-radius: 3px;
 }
 
-.event-item:hover {
+.cal-event-item:hover {
     background-color: rgba(0, 0, 0, 0.04);
 }
 
-.event-dot {
+.cal-event-dot {
     display: inline-block;
     width: 8px;
     height: 8px;
@@ -124,24 +125,24 @@
     flex-shrink: 0;
 }
 
-.event-title {
+.cal-event-title {
     white-space: nowrap;
     overflow: hidden;
 }
 
-.ellipsis {
+.cal-ellipsis {
     text-overflow: ellipsis;
 }
 
-.cancelled-event {
+.cal-cancelled-event {
     text-decoration: line-through;
 }
 
-.future-event {
+.cal-future-event {
     color: #3c4043;
 }
 
-.more-events {
+.cal-more-events {
     font-size: 11px;
     color: #70757a;
     margin-top: 2px;
@@ -149,6 +150,6 @@
     border-radius: 3px;
 }
 
-.more-events:hover {
+.cal-more-events:hover {
     background-color: rgba(0, 0, 0, 0.04);
 }
