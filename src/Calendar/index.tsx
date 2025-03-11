@@ -185,6 +185,7 @@ export const Calendar = <T extends CalendarEvent>({
                         onEventClick(event)
                       }
                     }}
+                    title={event.title}
                   >
                     <span className="event-dot" style={{ backgroundColor: event.color }}></span>
                     <span className={`event-title ${ellipsis ? 'ellipsis' : ''}`}>
