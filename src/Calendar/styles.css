@@ -110,6 +110,7 @@
     color: #000000;
     transition: background-color 0.1s ease;
     cursor: pointer;
+    border-radius: 3px;
 }
 
 .event-item:hover {
@@ -147,6 +148,7 @@
     color: #70757a;
     margin-top: 2px;
     cursor: pointer;
+    border-radius: 3px;
 }
 
 .more-events:hover {
