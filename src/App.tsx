@@ -11,12 +11,14 @@ function App() {
       title: '9:30am\u2002John Smith\u2002Shuttle Drop-off\u2002Alpha Store',
       color: '#bfbfbf',
       strikethrough: false,
+      style: { fontWeight: 'bold' },
     },
     {
       date: new Date(2025, 2, 3, 10, 45),
       title: '10:45am\u2002Emily Johnson\u2002Shuttle Pickup\u2002Alpha Store',
       color: '#60be23',
       strikethrough: false,
+      style: { color: 'gray' },
     },
     {
       date: new Date(2025, 2, 3, 13, 15),

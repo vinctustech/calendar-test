@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { CSSProperties, useState } from 'react'
 import './styles.css'
 import { CalendarLocale, en } from './locales'
 
@@ -102,6 +102,7 @@ export type CalendarEvent = {
   title: string
   color: string
   strikethrough?: boolean
+  style?: CSSProperties
 }
 
 export type CalendarProps<T extends CalendarEvent = CalendarEvent> = {
@@ -186,6 +187,7 @@ export const Calendar = <T extends CalendarEvent>({
                       ${isFutureDate(event.date) ? 'cal-future-event' : ''} 
                       ${event.strikethrough ? 'cal-cancelled-event' : ''}
                     `}
+                      style={event.style}
                       onClick={(e) => {
                         e.stopPropagation()
                         if (onEventClick) {
