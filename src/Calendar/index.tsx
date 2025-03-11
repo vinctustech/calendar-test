@@ -119,7 +119,7 @@ export type CalendarProps<T extends CalendarEvent = CalendarEvent> = {
 export const Calendar = <T extends CalendarEvent>({
   date = new Date(),
   events,
-  maxEventsPerDay = 3,
+  maxEventsPerDay = 4,
   onEventClick,
   onMoreEventsClick,
   header,

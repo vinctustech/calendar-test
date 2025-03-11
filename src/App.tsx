@@ -133,7 +133,7 @@ function App() {
       {/*  next*/}
       {/*</Button>*/}
       <div style={{ height: 'calc(100vh - 140px)' }}>
-        <Calendar date={date} events={sampleEvents} header={true} locale={en} ellipsis />
+        <Calendar date={date} events={sampleEvents} header={true} locale={en} />
       </div>
     </Card>
   )
