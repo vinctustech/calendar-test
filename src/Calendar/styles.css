@@ -107,8 +107,7 @@
     font-size: 12px;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
-    color: #80868b;
+    color: #000000;
     transition: background-color 0.1s ease;
     cursor: pointer;
 }
@@ -129,6 +128,9 @@
 .event-title {
     white-space: nowrap;
     overflow: hidden;
+}
+
+.ellipsis {
     text-overflow: ellipsis;
 }
 

@@ -113,6 +113,7 @@ export type CalendarProps<T extends CalendarEvent = CalendarEvent> = {
   header?: boolean
   daySelector?: boolean
   locale?: CalendarLocale
+  ellipsis?: boolean
 }
 
 export const Calendar = <T extends CalendarEvent>({
@@ -124,6 +125,7 @@ export const Calendar = <T extends CalendarEvent>({
   header,
   daySelector,
   locale = en,
+  ellipsis,
 }: CalendarProps<T>) => {
   const [selectedDate, setSelectedDate] = useState(new Date())
 
@@ -185,7 +187,9 @@ export const Calendar = <T extends CalendarEvent>({
                     }}
                   >
                     <span className="event-dot" style={{ backgroundColor: event.color }}></span>
-                    <span className="event-title">{event.title}</span>
+                    <span className={`event-title ${ellipsis ? 'ellipsis' : ''}`}>
+                      {event.title}
+                    </span>
                   </div>
                 ))}
 
