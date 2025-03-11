@@ -55,6 +55,12 @@ function App() {
       strikethrough: true,
     },
     {
+      date: new Date(2025, 2, 10, 11, 30),
+      title: '11:30am\u2002Jessica Taylor\u2002Valet Drop-off\u2002Alpha Store',
+      color: '#e25263',
+      strikethrough: true,
+    },
+    {
       date: new Date(2025, 2, 15, 9, 0),
       title: '9am\u2002Thomas Robinson\u2002Part Delivery\u2002Alpha Store',
       color: '#bfbfbf',

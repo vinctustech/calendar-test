@@ -119,7 +119,7 @@ export type CalendarProps<T extends CalendarEvent = CalendarEvent> = {
 export const Calendar = <T extends CalendarEvent>({
   date = new Date(),
   events,
-  maxEventsPerDay = 2,
+  maxEventsPerDay = 3,
   onEventClick,
   onMoreEventsClick,
   header,
@@ -171,28 +171,33 @@ export const Calendar = <T extends CalendarEvent>({
               </div>
 
               <div className="events-container">
-                {dateEvents.slice(0, maxEventsPerDay).map((event, eventIndex) => (
-                  <div
-                    key={eventIndex}
-                    className={`
+                {dateEvents
+                  .slice(
+                    0,
+                    dateEvents.length > maxEventsPerDay ? maxEventsPerDay - 1 : maxEventsPerDay,
+                  )
+                  .map((event, eventIndex) => (
+                    <div
+                      key={eventIndex}
+                      className={`
                       event-item 
                       ${isFutureDate(event.date) ? 'future-event' : ''} 
                       ${event.strikethrough ? 'cancelled-event' : ''}
                     `}
-                    onClick={(e) => {
-                      e.stopPropagation()
-                      if (onEventClick) {
-                        onEventClick(event)
-                      }
-                    }}
-                    title={event.title}
-                  >
-                    <span className="event-dot" style={{ backgroundColor: event.color }}></span>
-                    <span className={`event-title ${ellipsis ? 'ellipsis' : ''}`}>
-                      {event.title}
-                    </span>
-                  </div>
-                ))}
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        if (onEventClick) {
+                          onEventClick(event)
+                        }
+                      }}
+                      title={event.title}
+                    >
+                      <span className="event-dot" style={{ backgroundColor: event.color }}></span>
+                      <span className={`event-title ${ellipsis ? 'ellipsis' : ''}`}>
+                        {event.title}
+                      </span>
+                    </div>
+                  ))}
 
                 {dateEvents.length > maxEventsPerDay && (
                   <div
@@ -204,7 +209,7 @@ export const Calendar = <T extends CalendarEvent>({
                       }
                     }}
                   >
-                    +{dateEvents.length - maxEventsPerDay} {locale.moreText}
+                    +{dateEvents.length - maxEventsPerDay + 1} {locale.moreText}
                   </div>
                 )}
               </div>
