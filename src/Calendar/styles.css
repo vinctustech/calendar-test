@@ -75,8 +75,6 @@
 }
 
 .date-number {
-    width: 24px;
-    height: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -85,9 +83,8 @@
 }
 
 .today-number {
-    background-color: #1a73e8;
-    color: white;
-    border-radius: 50%;
+    color: #1a73e8;
+    font-weight: bold;
 }
 
 .other-month .date-number {
