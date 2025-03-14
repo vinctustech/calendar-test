@@ -46,7 +46,7 @@
 
   .cal-cell {
     position: relative;
-    padding: 5px;
+    padding: 4px;
     border-right: 1px solid #e0e0e0;
     border-bottom: 1px solid #e0e0e0;
     overflow: hidden;
@@ -73,7 +73,6 @@
     .cal-events-container {
       display: flex;
       flex-direction: column;
-      gap: 2px;
     }
   }
 
