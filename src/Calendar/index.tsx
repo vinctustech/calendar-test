@@ -1,5 +1,5 @@
 import { CSSProperties, useState } from 'react'
-import './styles.css'
+import './styles.scss'
 import { CalendarLocale, en } from './locales'
 
 const getDaysInMonth = (year: number, month: number) => {
@@ -144,7 +144,6 @@ export const Calendar = <T extends CalendarEvent>({
           </div>
         </div>
       )}
-
       <div className="cal-weekday-header">
         {locale.daysShort.map((day, index) => (
           <div key={index} className="cal-weekday-cell">
@@ -152,7 +151,6 @@ export const Calendar = <T extends CalendarEvent>({
           </div>
         ))}
       </div>
-
       <div className="cal-grid">
         {generateCalendarGrid(year, month).map((dateObj, index) => {
           const dateEvents = getEventsForDate(events, dateObj.date)
@@ -172,7 +170,6 @@ export const Calendar = <T extends CalendarEvent>({
                   {dateObj.day}
                 </span>
               </div>
-
               <div className="cal-events-container">
                 {dateEvents
                   .slice(
@@ -205,7 +202,6 @@ export const Calendar = <T extends CalendarEvent>({
                       </span>
                     </div>
                   ))}
-
                 {dateEvents.length > maxEventsPerDay && (
                   <div
                     className="cal-more-events"
